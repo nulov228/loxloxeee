@@ -50,13 +50,16 @@
         grid-auto-rows: max-content;
         text-align: center;
         background-color: blueviolet;
-
+        border: none;
     }
     a{
         text-decoration: none;
         color: inherit;
     }
     .lvv1:hover{
+        background-color: rgb(75, 17, 129);
+    }
+    .lvv1:active{
         background-color: rgb(75, 17, 129);
     }
     @font-face {
@@ -75,7 +78,7 @@
 </style>
 <body style="background-color: rgb(33, 2, 61);" data-bs-theme="dark">
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-    <nav class="navbar bg-body-tertiary" style="background-color: rgb(78, 0, 122) !important; width:220px; margin:10px; border-radius:10px">
+    <nav class="navbar bg-body-tertiary" style="background-color: rgb(78, 0, 122) !important; width:390px; margin:10px; border-radius:10px; flex-direction: row;">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1" style="font-family: 'Roboto', serif;
           font-optical-sizing: auto;
@@ -83,6 +86,9 @@
           font-style: italic;
           font-variation-settings:
             'wdth' 100;"><a href="./">PRO-К PRIVATE BOT</a></span>
+            <div style="background-color: #860684;height: 31px; display: grid; -webkit-box-pack: center; place-content: center; grid-auto-rows: max-content; text-transform: uppercase; text-align: center; border-radius: 13px; width: 140px;">
+                <span style="font-family: 'Roboto';font-style: normal;font-weight: 600;font-size: 16px;line-height: 18px;letter-spacing: 0.02em;"> <a href="./">выбор режима</a></span>               
+            </div>
         </div>
     </nav>
     <div style="background-color: rgb(49, 0, 88); height: 600px; width: auto; display:flex; justify-content:baseline; flex-direction: column;  margin-left: 20px; margin-right: 20px; border-radius: 10px;">
@@ -90,17 +96,11 @@
         <div id="grid" style="height: fit-content; width: fit-content; background-color: rgb(31, 24, 61); margin-top: 20px; border-radius: 10px; padding: 6px; ">
         </div>
        </div>
-       <div style="height: 12%; width: auto; display:flex; justify-content: center ">
-        <div style="background-color: rgb(10, 15, 30); height: 40px; width: fit-content; border-radius: 10px; padding: 3px; padding-left: 10px; padding-right: 10px; display: grid; -webkit-box-pack: center; place-content: center; grid-auto-rows: max-content; text-align: center;">
-            <span id="lovushek" style="font-family: 'zalupa';" >Ловушек: 1</span>
-        </div>
-       </div>
        <div style="height: 18%; width: auto; display:flex; justify-content: center ">
         <div style="background-color: rgb(10, 15, 30); height: 50px; width: 240px; border-radius: 10px; display: flex; padding: 3px;">
-            <div onclick="lovk(7)" class="lvv1" style="height: 100%; width: 100%; border-radius: 10px; margin-right: 1.5px;"><span class="lovushki">1</span></div>
-            <div onclick="lovk(5)" class="lvv1" style="height: 100%; width: 100%; border-radius: 10px; margin-left: 1.5px; margin-right: 1.5px"><span class="lovushki">3</span></div>
-            <div onclick="lovk(4)" class="lvv1" style="height: 100%; width: 100%; border-radius: 10px; margin-left: 1.5px; margin-right: 1.5px"><span class="lovushki">5</span></div>
-            <div onclick="lovk(3)" class="lvv1" style="height: 100%; width: 100%; border-radius: 10px; margin-left: 1.5px"><span class="lovushki">7</span></div>
+            <button onclick="down()" class="lvv1" style="height: 100%; width: 100%; border-radius: 10px; margin-right: 1.5px;"><span class="lovushki"> < </span></button>
+            <div class="" style="height: 100%; width: 100%; border-radius: 10px; margin-left: 1.5px; margin-right: 1.5px; display: grid; -webkit-box-pack: center; place-content: center; grid-auto-rows: max-content; text-transform: uppercase; text-align: center;"><span id="lovushek" class="lovushki">3</span></div>
+            <button onclick="up()" class="lvv1" style="height: 100%; width: 100%; border-radius: 10px; margin-left: 1.5px"><span class="lovushki"> > </span></button>
         </div>
        </div>
        <div style="height: 20%; width: auto; display:flex; justify-content: center ">
@@ -113,12 +113,37 @@
     </div>
 <script>
     var nagrad = 7;
+    cur_num = 7;
+    function up(){
+        if(cur_num == 7){
+            cur_num = 5;
+        }else if(cur_num == 5){
+            cur_num = 4;
+        }else if(cur_num == 4){
+            cur_num = 3;
+        }else if(cur_num == 3){
+            cur_num = 7;
+        }
+        lovk(cur_num);
+    }
+    function down(){
+        if(cur_num == 7){
+            cur_num = 3;
+        }else if(cur_num == 3){
+            cur_num = 4;
+        }else if(cur_num == 4){
+            cur_num = 5;
+        }else if(cur_num == 5){
+            cur_num = 7;
+        }
+        lovk(cur_num);
+    }
     function lovk(lovk_num){
         var lovushek = document.getElementById("lovushek");
-        if(lovk_num==7) lovushek.innerText = "Ловушек: 1";
-        if(lovk_num==5) lovushek.innerText = "Ловушек: 3";
-        if(lovk_num==4) lovushek.innerText = "Ловушек: 5";
-        if(lovk_num==3) lovushek.innerText = "Ловушек: 7";
+        if(lovk_num==7) lovushek.innerText = "1";
+        if(lovk_num==5) lovushek.innerText = "3";
+        if(lovk_num==4) lovushek.innerText = "5";
+        if(lovk_num==3) lovushek.innerText = "7";
         nagrad = lovk_num;
     }
     const grid = document.getElementById('grid');
