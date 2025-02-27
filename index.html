@@ -13,8 +13,11 @@
         height: 40px;
         width: 80px;
         background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
-        border-color: rgb(96, 28, 160);
+        border:none;
     }
+    button:active{
+        transform: scale(1.2);
+}
     .btn-go:hover{
         background-color: rgb(81, 20, 138);
         border-color: rgb(76, 20, 128);
@@ -27,6 +30,10 @@
         text-decoration: none;
         color: inherit;
     }
+    .a1{
+      height:100%;
+      width:100%;
+}
     h5{
       font-size: 18px;
     }
@@ -78,7 +85,7 @@
                         <img src="./luckyjet.avif" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Lucky Jet</h5>
-                          <a href="./luckyjet" class="btn  btn-go">Go</a>
+                          <button onclick="window.location = './luckyjet';" class="btn  btn-go"><a href="./luckyjet" >Go</a></button>
                         </div>
                       </div>
                   </div>
@@ -87,7 +94,7 @@
                         <img src="./mines.avif" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Mines</h5>
-                          <a href="./mines" class="btn  btn-go">Go</a>
+                            <button onclick="window.location = './mines';" class="btn  btn-go"><a href="./mines" >Go</a></button>
                         </div>
                       </div>
                   </div>
